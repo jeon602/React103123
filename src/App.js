@@ -1,10 +1,10 @@
-// function MyComponet1() {
-//     return (
-//         <div>
-//
-//         </div>
-//     );
-// }
+function MyComponet1() {
+    return (
+        <div>
+        <h1>hellow component</h1>
+        </div>
+    );
+}
 
 function MyComponent2() {
     return (
