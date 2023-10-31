@@ -1,10 +1,22 @@
+// function MyComponet1() {
+//     return (
+//         <div>
+//
+//         </div>
+//     );
+// }
 
-function App() {
-  return (
-    <div>
-
-    </div>
-  );
+function MyComponent2() {
+    return (
+        <>
+            <p>lorem ipsum alkdjf alkdjf</p>
+            <ul>
+                <li>lorem</li>
+                <li>ipsum</li>
+                <li>dolor</li>
+            </ul>
+        </>
+    )
 }
 
-export default App;
+export default MyComponent2;
