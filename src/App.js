@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <MyComp value="흥민" address="신촌" />
+      <MyComp value="손흥민" address="신촌" />
     </>
   );
 }
