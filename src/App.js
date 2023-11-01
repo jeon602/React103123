@@ -3,13 +3,15 @@
 
 import { MyBox } from "./MyComp1101m/MyBox";
 import { MyComp } from "./MyComp1101m/MyComp";
+import { MyContainer } from "./MyComp1101m/MyContainer";
 
 //chakraui css library
 function App() {
   return (
     <>
-      <MyBox />
       <MyComp />
+      <MyBox />
+      <MyContainer />
     </>
   );
 }
