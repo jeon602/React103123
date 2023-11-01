@@ -1,4 +1,4 @@
-import "../style/style1.css";
+import "../style/style1.module.css";
 export function MyComp() {
   return (
     <div>
