@@ -2,3 +2,9 @@
     background-color: red;
     color: white;
 }
+.special{
+    border: 3px solid burlywood;
+}
+.coffee{
+    text-decoration: underline;
+}

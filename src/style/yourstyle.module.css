@@ -2,3 +2,10 @@
     background-color: pink;
     color: blue;
 }
+.special{
+    border: 3px solid palevioletred;
+}
+.coffee{
+    text-decoration: underline;
+    color: darkorange;
+}
