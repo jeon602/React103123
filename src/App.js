@@ -1,17 +1,13 @@
-import { MyElem, city, person, country } from "./MyBox";
-import age from "./MyComp1101/MyElem";
-import MyContainer, { person, country } from "./MyComp1101/MyBox";
-
+import MyBox, { address } from "./MyComp1101/MyBox";
+import MyElem, { address as myAddress } from "./MyComp1101/MyElem";
+//별칭 as named export값을 import할 때 별칭을 부여할 수 있음.
 function App() {
   return (
     <>
-      <h1>{city}</h1>
-      <h1>{age}</h1> {/*default 는 하나밖에 없으므로 이름 상관 x*/}
-      <MyContainer />
-      <h1>
-        {person.age},{person.name}
-      </h1>
-      <h1>{country}</h1>
+      <h1>{address}</h1>
+      <h1>{myAddress}</h1>
+      <MyElem />
+      <MyBox />
     </>
   );
 }

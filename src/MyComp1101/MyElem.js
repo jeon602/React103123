@@ -7,10 +7,5 @@ function MyElem() {
   );
 }
 //named export
-export const city = "seoul";
+export const address = "강남";
 //default export:
-
-const age = 33;
-//defaultexport는 이름이 정해져 있지 않으며
-//한 파일에 하나밖에
-export default age;
