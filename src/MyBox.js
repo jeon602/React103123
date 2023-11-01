@@ -7,7 +7,7 @@ export function MyContainer() {
 export function MyElem() {
   return null;
 }
-export let name = "손흥민";
+export let country = "프랑스";
 export const address = "신촌";
 
 export const person = { name: "강인", team: "파리" };
