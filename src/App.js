@@ -1,16 +1,19 @@
-function App() {
+function MyHeader(props) {
   return (
-    <div style={{ display: "flex" }}>
-      <MyCompo />
-      <MyCompo />
-      <MyCompo />
+    <div style={{ color: props.color, backgroundColor: props.bg }}>
+      <h1 />
+      {props.text}
     </div>
   );
 }
-function MyCompo() {
-  const name = "흥민";
+function App() {
+  return(<div>
+    <MyHeader color = "white" bg = "black" text ="내가만들 제목"><div/>
+    <MyHeader color = "white" bg = "black" text ="내가만들 제목"><div/>
+      <div/>
+      );
 
-  return <div>{name}</div>;
+
 }
 
 export default App;
