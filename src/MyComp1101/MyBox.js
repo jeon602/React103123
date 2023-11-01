@@ -1,11 +1,15 @@
-function MyBox() {
+import MyBox, { person, team } from "./component/MyContainer";
+
+function App() {
   return (
     <div>
-      <h1>this is mybox</h1>
+      <MyBox />
+      <h1>{person.name}</h1>
+      <h1>{person.address}</h1>
+      <h1>{team.title}</h1>
+      <h1>{team.score}</h1>
     </div>
   );
 }
-export const country = "프랑스";
-export const person = { name: "son", age: 33 };
 
-export default MyBox;
+export default App;
