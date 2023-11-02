@@ -12,7 +12,7 @@ function App() {
       </Center>
 
       <Center bg={"yellowgreen.100"} h={"200px"}>
-        <Circle bg={"palevioletred"} w={"100px"} h={"100px"}>
+        <Circle bg={"yellowgreen"} w={"100px"} h={"100px"}>
           AAA+
           <PhoneIcon />
         </Circle>
