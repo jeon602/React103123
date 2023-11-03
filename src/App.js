@@ -1,23 +1,29 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import { Card, CardBody } from "@chakra-ui/react";
 
-function MyLink({ to, children }) {
+// children props 연습 2 : Mybox colore bg chilren
+
+function MyBox({ color, bg, children }) {
   return (
     <>
-      <a href={to}>{children}</a>
-      <Button as="a" href={to} colorScheme="skyblue"></Button>
+      <Card color={color} bg={bg}>
+        <CardBody>{children}</CardBody>
+      </Card>
     </>
   );
 }
 
-function App() {
+function App(props) {
   return (
-    <>
-      <MyLink to="http://www.naver.com">네이버로 </MyLink>
-      <MyLink to="http://www.daum.net">다음으로 </MyLink>
-      {/* a href="http://www.naver.com">네이버로 */}
-      {/* a href=MyLink to="http://www.daumnet">다음으로  */}
-    </>
+    <div>
+      <MyBox color="black" bg="yellowgreen">
+        HAVE NICE DAY!!!!!
+      </MyBox>
+
+      <MyBox color="black" bg="tomato">
+        TODAY IS FIRDAY!
+      </MyBox>
+    </div>
   );
 }
 
