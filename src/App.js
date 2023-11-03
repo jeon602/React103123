@@ -15,9 +15,13 @@ function App(props) {
 
   return (
     <div>
-      <Button onClick={handleClickButton1}>첫 번째 버튼</Button>
+      <Button onClick={handleClickButton1} bg="tomato">
+        첫 번째 버튼
+      </Button>
       <Button onClick={handleClickButton2}>두 번째 버튼</Button>
-      <Button onClick={() => handleButtonClick(3)}>세 번째 버튼</Button>
+      <Button onClick={() => handleButtonClick(3)} bg="tomato">
+        세 번째 버튼
+      </Button>
       <Button onClick={() => handleButtonClick(4)}>네 번째 버튼</Button>
     </div>
   );
