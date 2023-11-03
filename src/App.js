@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { Button, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
 function App(props) {
-  let [number, setNumber] = useState();
-
-  function handleClick() {
-    // number++;
-    setNumber(number++);
+  const [number, setNumber] = useState(0);
+  //필요하면 다른 값을 파생시킬 수ㅡ 있다/
+  const isOdd = number % 2 === 1;
+  function handleInputChange(e) {
+    setNumber(Number(e.target.value));
   }
   return (
     <div>
-      <Button onclick={handleClick} bg="tomato">
-        Change
-      </Button>
-      <Text>{number}</Text>
+      <input type="number" onChange={handleInputChange} bg="yellowgreen" />
+      <Text>
+        {isOdd && "홀수"}
+        {isOdd || "짝수"}
+      </Text>
     </div>
   );
 }
