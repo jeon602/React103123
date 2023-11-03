@@ -14,6 +14,7 @@ function App(props) {
     <div>
       <MyComp text="hello" address="SEOUL">
         some component 다른 컴포넌트가 존재할 수 있음.
+        children이라는 prop사용.
       </MyComp>
     </div>
   );
