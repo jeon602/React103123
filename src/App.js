@@ -1,27 +1,24 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
 
-//리액트에는 함수 명 작성 관습이 존재하는데
-// handle이벤트명
-//이벤트 명 앞에 handle이라고 작성한다.
-
 function App(props) {
-  function someFuctionName() {
-    console.log("Second");
+  function handleClickButton1() {
+    console.log("1번 버튼 클릭됨");
   }
-  function handleMouseEnter() {
-    console.log("third");
+  function handleClickButton2() {
+    console.log("버튼 클릭됨");
   }
-  function handleMouseLeave() {
-    console.log("4th");
+
+  function handleButtonClick(number) {
+    console.log(number + "번째 버튼 클릭 됨");
   }
+
   return (
     <div>
-      <Button onClick={() => console.log("first")}>버튼1</Button>
-      <Button onClick={someFuctionName}>버튼2</Button>
-      <Button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        버튼3
-      </Button>
+      <Button onClick={handleClickButton1}>첫 번째 버튼</Button>
+      <Button onClick={handleClickButton2}>두 번째 버튼</Button>
+      <Button onClick={() => handleButtonClick(3)}>세 번째 버튼</Button>
+      <Button onClick={() => handleButtonClick(4)}>네 번째 버튼</Button>
     </div>
   );
 }
