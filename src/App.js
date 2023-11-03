@@ -1,31 +1,24 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
-
-function MyComp({ to, someProp }) {
-  someProp();
-
-  return (
-    <>
-      <div>
-        <a href={to[0]}>LINK !</a>
-      </div>
-
-      <div>
-        <Button onclick={someProp}>버튼</Button>
-      </div>
-    </>
-  );
+function MyButton({ executeClick, children }) {
+  return <Button onClick={executeClick}>{children}</Button>;
 }
+//두개의 버튼 만들기
+//첫 버튼은 콘솔에 hello가 나오도록
+// 두번째는 콘솔에 greeting 이 나오도록
 
 function App(props) {
-  function fun1() {
-    console.log("func1 실행됨.");
+  function sayHello() {
+    console.log("HELLO");
   }
-
+  function sayGreeting() {
+    console.log("GREETING");
+  }
   return (
-    <div>
-      <MyComp to={["http://www.naver.com"]} someProp={fun1}></MyComp>
-    </div>
+    <>
+      <MyButton executeClick={sayHello}>안녕!</MyButton>
+      <MyButton executeClick={sayGreeting}>그리팅</MyButton>
+    </>
   );
 }
 
