@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@chakra-ui/react";
 //on property
 function App(props) {
+
   //event handler method
   //browser는 event객체를 매개값으로 넣어줌 ()
   //넣어주려면 e(event) 파라미터를 명시해주면 된다.
