@@ -23,6 +23,14 @@ function App(props) {
       <MyBox color="black" bg="tomato">
         TODAY IS FIRDAY!
       </MyBox>
+
+      <MyBox color="red" bg="skyblue">
+        tomato, berry, apple, olive, lecttuce, salt
+      </MyBox>
+
+      <MyBox color="white" bg="palevioletred">
+        Jeje's record shop
+      </MyBox>
     </div>
   );
 }
