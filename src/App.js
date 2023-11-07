@@ -9,22 +9,25 @@ function MyComp2({ message }) {
   );
 }
 
-function MyComp1() {
+function MyComp1({ onClick }) {
   return (
     <Box>
-      <Button>change text!</Button>
+      <Button onClick={onClick}>change text!</Button>
     </Box>
   );
 }
 
 function App(props) {
   const [message, setMessage] = useState("hello");
+  function handleButtonClick() {
+    setMessage("안녕하세요");
+  }
 
   return (
     <div>
-      <MyComp1></MyComp1>
+      <MyComp1 onClick={handleButtonClick()}></MyComp1>
       {/*mycomp1에 있는 버튼이 클릭되면*/}
-      <MyComp2></MyComp2>
+      <MyComp2 message={message}></MyComp2>
       {/*  Mycomp2에 있는 text가 바뀌게*/}
     </div>
   );
