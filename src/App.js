@@ -1,35 +1,48 @@
 import React, { useState } from "react";
 import * as PropTypes from "prop-types";
-import { Box, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Input, Text } from "@chakra-ui/react";
 
-function MyInput(props) {
-  return (
-    <Box>
-      <Input />
-    </Box>
-  );
+class MyInput extends React.Component {
+  render() {
+    let { address: address, onChange: onChange } = this.props;
+    return (
+      <Box>
+        <Input />
+      </Box>
+    );
+  }
 }
 
-function MyText(props) {
-  return (
-    <Box>
-      <Text>address</Text>
-      <Button onClick={onclick}>Change Button</Button>
-    </Box>
-  );
+MyInput.propTypes = {
+  address: PropTypes.any,
+  onChange: PropTypes.any,
+};
+
+class MyText extends React.Component {
+  render() {
+    let { props } = this.props;
+    return (
+      <Box>
+        <Text>address</Text>
+        <Button onClick={onclick}>Change Button</Button>
+      </Box>
+    );
+  }
 }
+
+MyText.propTypes = { props: PropTypes.any };
 
 function App({ props }) {
   const [address, setAddress] = useState("");
-
-  function handleInputChange(text) {
-    setAddress(text);
-  }
-
+// lift state up 부모에 올려놓았으니 prop으로 받아서 사용해라
   return (
     <div>
-      <MyInput address={address} onChange={handleInputChange} />
-      <MyText address={address} />
+      <MyInput value={value} onChange={(text) => setAddress(text)} />
+      <MyText value={address} />
+      <hr/>
+      <MyInput address={email} onChange={(text) => setEmail(text)} />
+      <MyText address={email} />
+
     </div>
   );
 }
