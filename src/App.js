@@ -1,83 +1,78 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Center,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Input, Text } from "@chakra-ui/react";
+import { useImmer } from "use-immer";
 
 function App(props) {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [person1, setPerson1] = useState({
+    name: "son",
+    city: "seoul",
+    email: "son@gmail",
+  });
 
-  function handleNameInput(e) {
-    setName(e.target.value);
+  const [person2, updatePerson2] = useImmer({
+    name: "kim",
+    city: "jeju",
+    email: "kim@naver",
+  });
+
+  function handleNameChange1(e) {
+    const copyPerson1 = { ...person1 };
+
+    copyPerson1.name = e.target.value;
+    setPerson1(copyPerson1);
   }
-  function handlePasswordInput(e) {
-    setPassword(e.target.value);
+
+  function handleCityChange1(e) {
+    setPerson1({ ...person1, city: e.target.value });
   }
 
-  function handleEmailInput(e) {
-    setEmail(e.target.value);
+  function handleEmailChange1(e) {
+    setPerson1({ ...person1, email: e.target.value });
   }
 
-  function handleSubmit() {
-    setSubmitting(true);
-    /*
-    axios
-      .post("/adduser", {
-        name,
-        email,
-        password,
-      })
-      .then((response) => console.log("성공할 때 해야하는일"))
-      .catch((error) => console.log("실패할 때 해야하는 일"))
-      .finally(() => console.log("꼭 해야하는 일"));
+  function handleNameChange2(e) {
+    updatePerson2((draft) => {
+      draft.name = e.target.value;
+    });
+  }
 
-     */
+  function handleCityChange2(e) {
+    updatePerson2((draft) => {
+      draft.city = e.target.value;
+    });
+  }
+
+  function handleEmailChange2(e) {
+    updatePerson2((draft) => {
+      draft.email = e.target.value;
+    });
   }
 
   return (
-    <Center>
-      <Box w={"480px"}>
-        <FormControl mb={5}>
-          <FormLabel>Name</FormLabel>
-          <Input type="text" value={name} onChange={handleNameInput} />
-          <FormHelperText>띄어쓰기 없이 입력해주세요.</FormHelperText>
-        </FormControl>
+    <div>
+      <Box>
+        <Input value={person1.name} onChange={handleNameChange1} />
+        <Text>이름 : {person1.name}</Text>
 
-        <FormControl mb={5}>
-          <FormLabel>Password</FormLabel>
-          <Input
-            type="password"
-            value={password}
-            onChange={handlePasswordInput}
-          />
-          <FormHelperText>
-            특수기호와 숫자를 하나 이상 작성해주세요.
-          </FormHelperText>
-        </FormControl>
+        <Input value={person1.city} onChange={handleCityChange1} />
+        <Text>도시 : {person1.city}</Text>
 
-        <FormControl mb={5}>
-          <FormLabel>Email</FormLabel>
-          <Input type="email" value={email} onChange={handleEmailInput} />
-          <FormHelperText>입력된 이메일은 중복될 수 없습니다.</FormHelperText>
-        </FormControl>
-
-        <Button
-          onClick={handleSubmit}
-          colorScheme="blue"
-          isLoading={submitting}
-        >
-          가입
-        </Button>
+        <Input value={person1.email} onChange={handleEmailChange1} />
+        <Text>메일 : {person1.email}</Text>
       </Box>
-    </Center>
+
+      <hr />
+
+      {/*Box>(Input+Text)*3*/}
+      <Box>
+        <Input value={person2.name} onChange={handleNameChange2}></Input>
+        <Text>이름 : {person2.name}</Text>
+        <Input value={person2.city} onChange={handleCityChange2}></Input>
+        <Text>도시 : {person2.city}</Text>
+        <Input value={person2.email} onChange={handleEmailChange2}></Input>
+        <Text>메일 : {person2.email}</Text>
+      </Box>
+    </div>
   );
 }
 
