@@ -1,53 +1,87 @@
-import React, { createContext, useContext, useState } from "react";
-import { Button, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  Route,
+  RouterProvider,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
+import { Box, Button, Text } from "@chakra-ui/react";
+import axios from "axios";
 
-function CComp() {
-  //3. context 사용하기 : useContext(Context);
-  const message = useContext(MessgeContext);
-  return <Text>받은메세지 : {message}</Text>;
-}
-function Bcomp() {
-  return <CComp />;
-}
-
-function Acomp() {
-  return <Bcomp />;
-}
-
-function App(props) {
-  const [message, setMessage] = useState("");
-  //message state-> Ccomp에 전달하기
-  // context만들기: create context () component 바깥에서 만들면 된다.
-  // 대부분의 코드에 null을 넣는데,
-  //: <Context.Provider value = {state}><Context.Provider>
-  // tree안에
-
-  {
-    /*message state를 CComp에 전달하기
-  1.context만들기 : createContext();
-  2.context에 state 넣기 : <Context.Provider value= {state}><Context.Provider>
-  3.tree 안에 context 사용하기 */
-  }
+function Home() {
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <Button onClick={() => setMessage("바꾼 메세지")}>메세지 바꾸기 </Button>
-      <MessageContext.Provider value={message}>
-        <Acomp />
-      </MessageContext.Provider>
-    </div>
+    <Box>
+      <Box>
+        <Button onClick={() => navigate("/path1?id=1")}>1번 고객 보기</Button>
+        <Button onClick={() => navigate("/path1?id=2")}>2번 고객 보기</Button>
+        <Button onClick={() => navigate("/path1?id=3")}>3번 고객 보기</Button>
+
+        <Button onClick={() => navigate("/path2/seoul")}>seoul 보기</Button>
+        <Button onClick={() => navigate("/path2/busan")}>busan 보기</Button>
+      </Box>
+      <Box>
+        <Outlet />
+      </Box>
+    </Box>
   );
-  //context이름은 ~~~Contect로 지으면 된다 메세지용이다 ~ 로그인용이다 ~~ 이름 짓기 나름  ㅡ> MessageContext= create
-  // Create the Context
-  // put state and dispatch into Context
-  // use context anywhere in the tree
+}
 
-  {
-    /*1.context 만들기
-  context이름은 대문자로 시작하고 ~~ context로 끝남*/
-  }
+function AComp() {
+  const [customer, setCustomer] = useState(null);
+  // query string 을 얻기
+  const [searchParams] = useSearchParams();
 
-  const MessageContext = createContext(null);
+  // console.log(searchParams);
+  // console.log(searchParams.get("id"));
+  // console.log(searchParams.toString());
+
+  useEffect(() => {
+    axios
+      .get("/api/main1/sub4?" + searchParams.toString())
+      .then((response) => setCustomer(response.data));
+  }, [searchParams]);
+
+  return (
+    <Box>
+      {customer && (
+        <Text>
+          {searchParams.get("id")} 번 고객명 {customer.name}
+        </Text>
+      )}
+    </Box>
+  );
+}
+
+function BComp() {
+  // dynamic param을 얻는 hook
+  const params = useParams();
+
+  console.log(params);
+
+  console.log(params.address);
+
+  return <Box>비 컴포넌트 {params.address}</Box>;
+}
+
+const routes = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Home />}>
+      <Route path="path1" element={<AComp />} />
+
+      {/* dynamic param : spring web mvc 의 path variable 과 유사 */}
+      <Route path="path2/:address" element={<BComp />} />
+    </Route>,
+  ),
+);
+
+function App(props) {
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
